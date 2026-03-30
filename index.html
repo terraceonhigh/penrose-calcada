@@ -36,7 +36,6 @@
     </label>
     <label>Colouring:
       <select id="colorRule" onchange="render()">
-        <option value="calcada-random">Calcada random</option>
         <option value="triangle-type">Triangle type</option>
         <option value="rhombus-type">Rhombus type (thick/thin)</option>
         <option value="rhombus-solid">Rhombus outlines only</option>
@@ -168,13 +167,8 @@ function render() {
   const H = canvas.height;
   const subdivisions = parseInt(document.getElementById('subSlider').value);
   const scalePct = parseInt(document.getElementById('scaleSlider').value) / 100;
-  let colorRule = document.getElementById('colorRule').value;
-  let borderRule = document.getElementById('borderRule').value;
-  // Calçada random: pick between alternating and thick/thin, always rhombus borders
-  if (colorRule === 'calcada-random') {
-    colorRule = Math.random() < 0.5 ? 'rhombus-alt' : 'rhombus-type';
-    borderRule = 'rhombus';
-  }
+  const colorRule = document.getElementById('colorRule').value;
+  const borderRule = document.getElementById('borderRule').value;
   const theme = THEMES[document.getElementById('themeSelect').value];
 
   // Generate triangles
